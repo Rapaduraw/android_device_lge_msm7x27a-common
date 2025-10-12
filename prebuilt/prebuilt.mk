@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-OPENCAMERA_VERSION := 1.37
+OPENCAMERA_VERSION := 93
 
 ifneq (not_use_prebuilt, $(shell test -d $(TOP)/packages/apps/Camera2 && echo not_use_prebuilt))
 PRODUCT_COPY_FILES += \
