@@ -116,6 +116,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm7x27a
 
+# HWComposer
+PRODUCT_PACKAGES += \
+    hwcomposer.msm7x27a
+
 # Light HAL
 PRODUCT_PACKAGES += \
     lights.msm7x27a
