@@ -370,7 +370,12 @@ static int hwc_blank(struct hwc_composer_device_1* dev, int dpy, int blank)
             // Enable HPD here, as during bootup unblank is called
             // when SF is completely initialized
             ctx->mExtDisplay->setHPD(1);
-        }
+
+            if (ctx->vstate.enable) {
+            ALOGD("HWC_BLANK: Re-enabling VSYNC control after unblank.");
+            hwc_vsync_control(ctx, dpy, 1);
+            }
+}
 
         ctx->dpyAttr[dpy].isActive = !blank;
 
@@ -680,7 +685,24 @@ static int hwc_set(hwc_composer_device_1 *dev,
             default:
                 ret = -EINVAL;
         }
+}
+
+    for (size_t i = 0; i < numDisplays; i++) {
+        hwc_display_contents_1_t* list = displays[i];
+        if (list) {
+            if (list->retireFenceFd >= 0) {
+                close(list->retireFenceFd);
+                list->retireFenceFd = -1;
+            }
+            for (size_t j = 0; j < list->numHwLayers; j++) {
+                if (list->hwLayers[j].releaseFenceFd >= 0) {
+                    close(list->hwLayers[j].releaseFenceFd);
+                    list->hwLayers[j].releaseFenceFd = -1;
+                }
+            }
+        }
     }
+  
     // This is only indicative of how many times SurfaceFlinger posts
     // frames to the display.
     CALC_FPS();
