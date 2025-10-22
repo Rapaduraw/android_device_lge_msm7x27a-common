@@ -11,11 +11,9 @@ PRODUCT_PACKAGES += \
     copybit.msm7x27a \
     memtrack.msm7x27a
 
-# HWComposer is not supported on second generation devices
-ifeq ($(LGE_MSM7X27A_GENERATION),1)
+# HWComposer
 PRODUCT_PACKAGES += \
     hwcomposer.msm7x27a
-endif
 
 # OpenGL properties
 PRODUCT_PROPERTY_OVERRIDES += \
