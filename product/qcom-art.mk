@@ -5,6 +5,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # ART properties for first generation
 ifeq ($(LGE_MSM7X27A_GENERATION),1)
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter="balanced" \
+    dalvik.vm.dex2oat-filter="speed-profile" \
     dalvik.vm.image-dex2oat-filter="speed"
 endif
