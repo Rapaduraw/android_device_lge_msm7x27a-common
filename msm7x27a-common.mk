@@ -191,6 +191,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network="0" \
     rild.libpath="/system/lib/libril-qc-qmi-1.so"
 
+# HWComposer
+PRODUCT_PACKAGES += \
+    hwcomposer.msm7x27a
+
 # Data
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd="true" \
